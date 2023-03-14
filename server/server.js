@@ -28,6 +28,6 @@ app.use(morgan("dev"));
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 // port
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

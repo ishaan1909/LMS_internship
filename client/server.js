@@ -15,7 +15,7 @@ app
       server.use(
         "/api",
         createProxyMiddleware({
-          target: "http://localhost:8000",
+          target: "http://localhost:8080",
           changeOrigin: true,
         })
       );
@@ -33,3 +33,8 @@ app
   .catch((err) => {
     console.log("Error", err);
   });
+
+
+
+ 
+

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
@@ -13,10 +13,14 @@ const Login = () => {
 
   // trying to access the state
   const { state, dispatch } = useContext(Context);
-
+  const {user} = state;
   // router
   const router = useRouter();
 
+  useEffect(()=>{
+    if(user!==null) router.push("/homepage");
+  },[user])
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.table({ name, email, password });
@@ -34,7 +38,8 @@ const Login = () => {
       // save in local storage
       window.localStorage.setItem("user", JSON.stringify(data));
       // redirect
-      router.push("/");
+      
+      router.push("/homepage");
       // setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
